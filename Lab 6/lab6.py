@@ -10,7 +10,6 @@ import csv
 import os
 from datetime import datetime
 
-# --- ПАТЧ ДЛЯ Python 3.11+ / 3.12: добавляем inspect.getargspec, если его нет ---
 import inspect
 from collections import namedtuple
 
@@ -307,7 +306,7 @@ class GSRMonitor:
             self.iterator = util.Iterator(self.board)
             self.iterator.start()
 
-            pin_index = int(self.CHANNEL[1])  # "A0" -> 0, "A1" -> 1, ...
+            pin_index = int(self.CHANNEL[1]) 
             self.analog_pin = self.board.get_pin(f'a:{pin_index}:i')
 
             time.sleep(1.0)
@@ -355,7 +354,7 @@ class GSRMonitor:
                     try:
                         value = self.analog_pin.read()
                         if value is not None:
-                            sensor_value = int(value * 1023)  # приводим к 0–1023
+                            sensor_value = int(value * 1023) 
 
                             timestamp = time.time()
                             self.x_data.append(self.counter)
@@ -572,3 +571,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
